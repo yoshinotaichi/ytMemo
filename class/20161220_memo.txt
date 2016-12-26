@@ -1,0 +1,176 @@
+20161220_memo
+=============
+
+meta:  
+20161220
+
+---
+
+# Windowをつくるプログラム
+
+実行すると、windowを表示するプログラムをつくる.
+
+
+## 1. 最初のwindow.
+
+windowを１つ表示するだけ.
+
+- java_file: AlohaWindow.java
+
+	```java
+	import java.awt.*;
+	import javax.swing.*;
+
+	public class AlohaWindow {
+		public static void main(String[] args) {
+			// windowをつくる
+			JFrame frame = new JFrame();
+
+			// windowのサイズ  ↓タテ
+			frame.setSize(300,200);
+
+			// windowのタイトル
+			frame.setTitle("アオキ");
+
+			// windowがおわるとき、プログラムもおわる
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+			// 順番に表示する( FlowLayout )
+			frame.setLayout( new FlowLayout() );
+
+
+
+			// "HELLO"と表示するラベル(JLabel)をつくる.
+			JLabel label = new JLabel("HELLO");
+			Container ctnr = frame.getContentPane();
+			ctnr.add(label);
+
+			// ボタン(JButton)をつくる.
+			JButton button = new JButton("Click Me!");
+			ctnr.add(button);
+
+			// windowを表示する
+			frame.setVisible(true);
+		}
+	}
+	```
+
+
+frame.setBounds(x, y, width, height);
+
+	JFrame.DO_NOTHING_ON_CLOSE
+	JFrame.HIDE_ON_CLOSE
+	JFrame.DISPOSE_ON_CLOSE
+	JFrame.EXIT_ON_CLOSE
+frame.getContentPane()
+contentpane.add(btn, BorderLayout.NORTH);
+
+panel.setBackground(Color.Blue);
+- ContentPaneにPanelをadd.
+
+
+
+
+
+
+
+# Git Bash, GitHub と ALOHA
+
+- yse2016/GitHubLessons
+	- リポジトリを確認する
+	- GitHub, Git Bashの使い方確認
+
+
+## PCで、先週のブランチ(branch)を確認する
+
+0. ブランチはあるか？
+1. 先週のブランチにきりかえる.
+2. ブランチで何か忘れてないか？
+
+	```bash
+	git branch
+	20161215
+   *master
+   ```
+
+3. 先週のブランチがあるなら、きりかえる.
+4. Commitするか？確認する.
+
+	```bash
+	git checkout 20161215
+	git branch
+  * 20161215
+  	master
+
+  	git status
+  	```
+
+5. 今日のブランチと今日のdirを作る
+
+	```bash
+	git checkout -b 20161220
+	git branch
+	20161215
+  * 20161220
+    master
+
+    mkdir 20161220
+    ls
+    cd 20161220
+    pwd
+    ```
+
+6. ALOHA!
+
+	Aloha.javaをつくって、コンパイルして、実行してみる.
+	できたら、Commitして、pushする.
+
+	1. Aloha.javaをつくる.
+		- "ALOHA!"と20回表示する
+		- codeを書く & 保存する
+		- コンパイルする
+		- 実行する
+		- エラーなら、書きなおす
+
+		```java
+		public class Aloha {
+			public static void main(String[] args) {
+				// 20回くり返す
+				for(int i = 0;  i < 20;  i++) {
+					System.out.println("ALOHA!");
+				}
+			}
+		}
+		```
+
+	2. Commitする.
+
+		```bash
+		git status
+		git add .
+		git commit -m "Aloha.java added."
+		git status
+		```
+
+	3. pushする.
+
+		```bash
+		git push origin 20161220
+		```
+
+
+
+
+
+
+
+
+
+
+
+
+end.
+
+
+
+

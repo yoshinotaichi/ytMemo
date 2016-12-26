@@ -1,0 +1,325 @@
+20161222_memo
+=============
+
+meta:  
+20161222
+
+---
+
+# 今日やること
+- [ ]ALOHA
+- [ ]IMAGE
+- [ ]CLICK
+
+
+# ALOHA + Window
+
+0. GitHubの準備
+
+	1. Google Chromeで、github.comにアクセスする
+	2. Git Bash( Git Shell )を起動する
+	3. 今日のブランチをつくる
+
+	```bash
+	cd
+	cd documents
+	cd github
+	cd 160999		<- リポジトリに移動
+	git status
+	```
+
+	もし、赤い文字で表示がでたら、commitする
+
+	```bash
+	git add .
+	git commit -m "20161220 commit!"
+	git status
+	```
+
+	赤い文字が出なくなったら、つぎにいく.
+	「新しいブランチとフォルダをつくる」
+
+	```bash
+	git checkout -b 20161222
+	mkdir 20161222
+	cd 20161222
+	```
+
+1. "ALOHA!"と表示する
+
+	"ALOHA!"と表示するプログラムをつくって、
+	commitして、pushする.
+
+	- java_file: Aloha.java
+
+	```java
+	public class Aloha {
+		public static void main(String[] args) {
+			System.out.println("ALOHA!");
+		}
+	}
+	```
+
+	```bash
+	javac Aloha.java
+	java Aloha
+	ALOHA!
+
+	git add .
+	git commit -m "Aloha.java added."
+	git push origin 20161222
+	```
+
+	GitHub.comに、"20161222"ブランチがあるか？
+	Gogle Chromeで確認しましょう.
+
+
+2. ウィンドウを表示する
+
+	- java_file: AlohaWindow.java
+
+	```java
+	import java.awt.*;
+	import javax.swing.*;
+
+	public class AlohaWindow {
+		public static void main(String[] args) {
+			JFrame frame;
+
+			// ウィンドウをつくる
+			frame = new JFrame();
+
+			// ウィンドウを表示する
+			frame.setVisible(true);
+		}
+	}
+	```
+
+	実行できたら、右上の x をクリックしてとじる.
+	Git Bashで、"Ctrl-c"をプログラムをおわる.
+
+	```java
+	import java.awt.*;
+	import javax.swing.*;
+
+	public class AlohaWindow {
+		public static void main(String[] args) {
+			JFrame frame;
+
+			// ウィンドウをつくる
+			frame = new JFrame();
+
+			// ウィンドウの設定
+			frame.setLocation(200, 200);	// 場所
+			frame.setSize(300, 300);		// サイズ
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+			// ウィンドウを表示する
+			frame.setVisible(true);
+		}
+	}
+	```
+
+
+	ここで、、、新しいファイルをつくって、もう一度かく.
+
+	- java_file: MainFrameMan.java
+
+	```java
+	import java.awt.*;
+	import javax.swing.*;
+
+	public class MainFrameMan {
+		public static void main(String[] args) {
+			FrameMan fm = new FrameMan();
+		}
+	}
+
+
+	class FrameMan {
+		// データ
+		JFrame frame;
+		JPanel panel;
+		JLabel label;
+
+		// メソッド( 処理 )
+		public FrameMan(){
+			System.out.println("ALOHA2!");
+
+			// windowをつくる
+			openWindow();
+		}
+
+		private void openWindow(){
+			// windowをつくる
+			frame = new JFrame();
+
+			// windowの設定
+			frame.setLocation(200, 200);
+			frame.setSize(300, 300);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+			// パネルとラベルをつくる
+			panel = new JPanel();
+			label = new JLabel("ALOHA!");
+
+			// パネルとラベルを表示する
+			panel.add(label);
+			frame.add(panel);
+
+			// windowを表示する
+			frame.setVisible(true);
+		}
+	}
+	```
+
+
+
+
+
+# IMAGE
+
+ウィンドウに画像を表示する
+- frameをつくる
+- panelをつくる
+- labelをつくる
+	- labelに、画像をいれる
+- labelを、panelにのせる
+- panelを、frameにのせる
+- frameを表示する
+
+- ちいさい画像をつくる
+	- [URL](http://icon-generator.net/)
+
+
+
+
+- java_file: MainFrameMan2.java
+	- MainFrameMan.javaをコピー
+
+
+	```java
+	import java.awt.*;
+	import javax.swing.*;
+
+	public class MainFrameMan2 {
+		public static void main(String[] args) {
+			FrameMan fm = new FrameMan();
+		}
+	}
+
+
+	class FrameMan {
+		// データ
+		JFrame frame;
+		JPanel panel;
+		JLabel label;
+		ImageIcon icon;
+
+		// メソッド( 処理 )
+		public FrameMan(){
+			System.out.println("ALOHA2!");
+
+			// windowをつくる
+			openWindow();
+		}
+
+		private void openWindow(){
+			// windowをつくる
+			frame = new JFrame();
+
+			// windowの設定
+			frame.setLocation(200, 200);
+			frame.setSize(300, 300);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+			// 画像データをつくる
+			icon = new ImageIcon("1_Desktop_Icons/icon_048.png");
+
+			// パネルとラベルをつくる
+			panel = new JPanel();
+			label = new JLabel(icon);
+
+			// パネルとラベルを表示する
+			panel.add(label);
+			frame.add(panel);
+
+			// windowを表示する
+			frame.setVisible(true);
+		}
+	}
+	```
+
+
+
+# CLICK
+
+ボタンクリック＋処理
+
+ラベルと、ボタンを表示する.
+ボタンを click すると、"HELLO!" -> "Aoki!"になる.
+
+- java_file: MainFrameMan3.java
+	- MainFrameMan2.java をコピーする.
+
+
+	```java:MainFrameMan3.java
+
+	import java.awt.*;
+	import java.awt.event.*;
+	import javax.swing.*;
+
+	public class MainFrameMan3 {
+		public static void main(String[] args) {
+			FrameMan fm = new FrameMan();
+		}
+	}
+
+
+	class FrameMan implements ActionListener{
+		// データ
+		JFrame frame;
+		JPanel panel;
+		JLabel label;
+		JButton button;
+
+		// メソッド( 処理 )
+		public FrameMan(){
+			// windowをつくる
+			openWindow();
+		}
+
+		private void openWindow(){
+			// windowをつくる
+			frame = new JFrame();
+
+			// windowの設定
+			frame.setLocation(200, 200);
+			frame.setSize(300, 300);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+			// パネルとラベルとボタンをつくる
+			panel = new JPanel();
+			label = new JLabel("HELLO");
+			button = new JButton("ClickMe!");
+			button.addActionListener(this);
+
+			// パネルとラベルとボタンを表示する
+			panel.add(label);
+			panel.add(button);
+			frame.add(panel);
+
+			// windowを表示する
+			frame.setVisible(true);
+		}
+
+		public void actionPerformed(ActionEvent e){
+			// ラベルを書きかえる.
+			label.setText("Aoki!");
+		}
+	}
+	```
+
+
+end.
